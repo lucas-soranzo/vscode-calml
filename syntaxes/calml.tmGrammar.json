@@ -1,0 +1,27 @@
+{
+    "scopeName": "source.calml",
+    "patterns": [{ "include": "#expression" }],
+    "repository": {
+        "expression": {
+            "patterns": [{ "include": "#title" }, { "include": "#row" }, { "include": "#chord" }, { "include": "section" }]
+        },
+        "title": {
+            "match": "#(.*?)#",
+            "name": "markup.heading"
+        },       
+        "chord": {
+            "match": "\\{(.*?)\\}",
+            "name": "markup.bold"
+        }, 
+        "row": {
+            "name": "string.quoted",
+            "begin": "\\(",
+            "end": "\\)",
+            "patterns": [{ "include": "#chord" }] 
+        },
+        "section": {
+            "match": "\\[(.*?)\\]",
+            "name": "markup.italic"
+        }
+    }
+}
